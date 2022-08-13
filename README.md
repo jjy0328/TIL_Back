@@ -1,2 +1,2 @@
-# Zero-s-Study
+# ZeroStudy
 공부 기록
