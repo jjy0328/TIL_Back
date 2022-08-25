@@ -1,0 +1,47 @@
+<style>
+   .modal-content {
+   background-color: #212121
+   }
+</style>
+<!-- Selling Confirm -->
+<!-- modal, html class="col-md-6"  맞춰주기 -->
+<div class="modal fade" id="Modal-SellingConfirm-{{ owned_product.pname }}"
+   tabindex="-1"
+   aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+   <div class="modal-content">
+      <div class="modal-header">
+         <h5 class="modal-title" id="ModalLabel">
+            <!-- -->
+            {{ owned_product.pname }}
+         </h5>
+         <button type="button" class="close"
+            data-dismiss="modal" aria-label="Close">
+         <span aria-hidden="true">&times;</span>
+         </button>
+      </div>
+      <div class="modal-body">
+         <form method="POST">
+         <!-- 화면에 표시되지는 않지만 CSRF로부터 보호하는 데 필요한 작업을 처리 -->
+         {{ selling_form.hidden_tag() }}
+         <h4 class=" text-center">
+            Are you sure you want to sell {{ owned_product.pname }} for {{ owned_product.price }}$ ?
+         </h4>
+         <br>
+         <h6 class="text-center">
+            By clicking Sell, you will put this product back on market
+         </h6>
+          <br>
+          <input id="sold_product" name="sold_product" type="hidden" value="{{owned_product.pname}}">
+             <!-- purchase와 구분을 주기 우해 danger로 표현 -> danger : 빨강으로 표시 / success: 초록 -->
+          {{ selling_form.submit(class="btn btn-outline-danger btn-block") }}
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary"
+                data-dismiss="modal">Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

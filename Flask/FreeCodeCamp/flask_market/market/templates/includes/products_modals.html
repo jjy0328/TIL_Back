@@ -1,0 +1,76 @@
+<style>
+  .modal-content {
+    background-color: #212121
+  }
+</style>
+
+<!-- More Info -->
+<div class="modal fade" id="Modal-Detail-{{ product.pname }}"
+     tabindex="-1"
+     aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="ModalLabel">
+          <!-- -->
+          {{ product.pname }}
+        </h5>
+        <button type="button" class="close"
+                data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        {{ product.detail }}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary"
+                data-dismiss="modal">Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Purchase Confirm -->
+<div class="modal fade" id="Modal-PurchaseConfirm-{{ product.pname }}"
+     tabindex="-1"
+     aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="ModalLabel">
+          <!-- -->
+          {{ product.pname }}
+        </h5>
+        <button type="button" class="close"
+                data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="POST">
+          <!-- 화면에 표시되지는 않지만 CSRF로부터 보호하는 데 필요한 작업을 처리 -->
+          {{ purchase_form.hidden_tag() }}
+
+          <h4 class=" text-center">
+            Are you sure you want to buy {{ product.pname }} for {{ product.price }}$ ?
+          </h4>
+          <br>
+          <h6 class="text-center">
+            By clicking Purchase, you will purchase this item.
+          </h6>
+          <br>
+          <!-- 구매하는 form으로 이동-->
+          <input id="purchased_product" name="purchased_product" type="hidden" value="{{product.pname}}">
+          {{ purchase_form.submit(class="btn btn-outline-success btn-block") }}
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary"
+                data-dismiss="modal">Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

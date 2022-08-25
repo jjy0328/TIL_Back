@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block title %}
+Register Page
+{% endblock %}
+
+{% block content %}
+<body class ="text-center">
+    <div class = "container">
+        <!-- post : 클라이언트에서 서버로 리소스를 생성하거나 업데이트
+             class : class 선택  style 지정 이유 : 다크모드로 작업하기 때문  -->
+        <form method="POST" class="form-register" style="color:white">
+            <!-- pwd 해킹 protect -->
+            {{ form.hidden_tag() }}
+            <img class="mb-4" src="https://res.cloudinary.com/jimshapedcoding/image/upload/v1597332609/android-icon-192x192_ove2a7.png" alt="">
+            <h1 class="h3 mb-3 font-weight-normal">
+                Please Create your Account
+            </h1>
+            <br>
+            {{ form.name.label() }}
+            <!-- accept attribute like in real html code
+                placeholder : client가 이해가능하게 설명해주는 란-->
+            {{ form.name(class="form-control", placeholder = "User Name") }}
+
+            {{ form.id.label() }}
+            {{ form.id(class="form-control", placeholder = "User ID") }}
+
+            {{ form.pwd1.label() }}
+            {{ form.pwd1(class="form-control", placeholder = "Password") }}
+
+            {{ form.pwd2.label() }}
+            {{ form.pwd2(class="form-control", placeholder = "Confirm Password") }}
+
+            {{ form.gender.label() }}
+            {{ form.gender(class="form-control", placeholder = " Gender / 0:Male, 1:Female") }}
+
+            {{ form.rnum.label() }}
+            {{ form.rnum(class="form-control", placeholder = "Register Number") }}
+
+            {{ form.phnum.label() }}
+            {{ form.phnum(class="form-control", placeholder = "Phone Number") }}
+
+            {{ form.address.label() }}
+            {{ form.address(class="form-control", placeholder = "Address") }}
+
+            {{ form.email.label() }}
+            {{ form.email(class="form-control", placeholder = "Email Address") }}
+
+            <!-- button large, expend button, place the button in a blue-color version -->
+            <br>
+
+            <br>
+
+
+            <div class="checkbox mb-3">
+               <h6>Already have an account?</h6>
+               <a class="btn btn-sm btn-secondary" href="{{ url_for('login_page') }}">Login</a>
+            </div>
+
+            {{ form.submit(class="btn btn-lg btn-block btn-primary") }}
+
+    </form>
+    </div>
+</body>
+{% endblock %}
